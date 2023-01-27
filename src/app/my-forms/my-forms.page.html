@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>my-forms</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="loginForm" novalidate (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label>First Name:</ion-label>
+      <ion-input type="text" formControlName="firstName"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.controls['firstName'].invalid && (loginForm.controls['firstName'].dirty || loginForm.controls['firstName'].touched)" class="alert alert-danger">
+      <div *ngIf="loginForm.controls['firstName'].errors?.['required']">
+        firstName is required.
+      </div>
+    </div>
+
+    <ion-item>
+      <ion-label>Last Name:</ion-label>
+      <ion-input type="text" formControlName="lastName"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.controls['lastName'].invalid && (loginForm.controls['lastName'].dirty || loginForm.controls['lastName'].touched)" class="alert alert-danger">
+      <div *ngIf="loginForm.controls['lastName'].errors?.['required']">
+        lastName is required.
+      </div>
+    </div>
+
+    <ion-item>
+      <ion-label>Phone:</ion-label>
+      <ion-input type="text" formControlName="phone"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.controls['phone'].invalid && (loginForm.controls['phone'].dirty || loginForm.controls['phone'].touched)" class="alert alert-danger">
+      <div *ngIf="loginForm.controls['phone'].errors?.['required']">
+        phone is required.
+      </div>
+    </div>
+
+    <ion-item>
+      <ion-label>Email:</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="alert alert-danger">
+      <div *ngIf="loginForm.controls['email'].errors?.['required']">
+        email is required.
+      </div>
+    </div>
+
+    <ion-button expand="full" type="submit" [disabled]="loginForm.pristine || loginForm.invalid">
+      Enregistrer
+    </ion-button>
+  </form>
+</ion-content>
